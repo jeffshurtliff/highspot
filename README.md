@@ -1,2 +1,2 @@
-# highspot
-Python SDK for the Highspot API
+# Highspot Python SDK
+A Python toolset for utilizing the Highspot API
