@@ -26,4 +26,3 @@ class Highspot(object):
 
         # Define the base URL
         self.base_url = f'https://api-su2.highspot.com/v{api_version}'
-
