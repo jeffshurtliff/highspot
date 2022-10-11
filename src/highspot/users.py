@@ -43,7 +43,7 @@ def get_users(hs_object, email=None, list_type=None, with_fields=None, exclude_f
     :type start: int, str
     :param limit: Maximum number of users returned (``100`` by default)
     :type limit: int, str
-    :returns: A list of dictionaries containing the user data
+    :returns: A dictionary containing the user data
     :raises: :py:exc:`highspot.errors.exceptions.InvalidFieldError`,
              :py:exc:`highspot.errors.exceptions.APIConnectionError`
     """

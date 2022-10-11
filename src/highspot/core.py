@@ -105,7 +105,7 @@ class Highspot(object):
             :type start: int, str
             :param limit: Maximum number of users returned (``100`` by default)
             :type limit: int, str
-            :returns: A list of dictionaries containing the user data
+            :returns: A dictionary containing the user data
             :raises: :py:exc:`highspot.errors.exceptions.InvalidFieldError`,
                      :py:exc:`highspot.errors.exceptions.APIConnectionError`
             """
