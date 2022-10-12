@@ -112,3 +112,40 @@ class Highspot(object):
             return users_module.get_users(self.hs_object, email=email, list_type=list_type, with_fields=with_fields,
                                           exclude_fields=exclude_fields, start=start, limit=limit)
 
+        def get_user(self, user_id):
+            """This function retrieves the metadata for a specific user.
+
+            .. versionadded:: 1.0.0
+
+            :param user_id: The unique identifier for the user
+            :type user_id: str
+            :returns: The user metadata as a dictionary
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return users_module.get_user(self.hs_object, user_id=user_id)
+
+        def get_user_properties(self, user_id):
+            """This function retrieves the properties for a specific user.
+
+            .. versionadded:: 1.0.0
+
+            :param user_id: The unique identifier for the user
+            :type user_id: str
+            :returns: The user properties as a dictionary
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return users_module.get_user_properties(self.hs_object, user_id=user_id)
+
+        def get_user_property(self, user_id, property_name):
+            """This function retrieves a given property for a specific user.
+
+            .. versionadded:: 1.0.0
+
+            :param user_id: The unique identifier for the user
+            :type user_id: str
+            :param property_name: The name of the property value to return
+            :type property_name: str
+            :returns: The user properties as a dictionary
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return users_module.get_user_property(self.hs_object, user_id=user_id, property_name=property_name)

@@ -4,7 +4,7 @@
 :Synopsis:          Defines the users-related functions associated with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     11 Oct 2022
+:Modified Date:     12 Oct 2022
 """
 
 from . import api
@@ -69,4 +69,54 @@ def get_users(hs_object, email=None, list_type=None, with_fields=None, exclude_f
         endpoint += segment if endpoint.endswith('?') else f'&{segment}'
     start_limit_segment = f'start={start}&limit={limit}'
     endpoint += start_limit_segment if endpoint.endswith('?') else f'&{start_limit_segment}'
+    return api.get_request_with_retries(hs_object, endpoint)
+
+
+def get_user(hs_object, user_id):
+    """This function retrieves the metadata for a specific user.
+
+    .. versionadded:: 1.0.0
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param user_id: The unique identifier for the user
+    :type user_id: str
+    :returns: The user metadata as a dictionary
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/users/{user_id}'
+    return api.get_request_with_retries(hs_object, endpoint)
+
+
+def get_user_properties(hs_object, user_id):
+    """This function retrieves the properties for a specific user.
+
+    .. versionadded:: 1.0.0
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param user_id: The unique identifier for the user
+    :type user_id: str
+    :returns: The user properties as a dictionary
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/users/{user_id}/properties'
+    return api.get_request_with_retries(hs_object, endpoint)
+
+
+def get_user_property(hs_object, user_id, property_name):
+    """This function retrieves a given property for a specific user.
+
+    .. versionadded:: 1.0.0
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param user_id: The unique identifier for the user
+    :type user_id: str
+    :param property_name: The name of the property value to return
+    :type property_name: str
+    :returns: The user properties as a dictionary
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/users/{user_id}/properties/{property_name}'
     return api.get_request_with_retries(hs_object, endpoint)
