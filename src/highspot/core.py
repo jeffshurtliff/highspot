@@ -4,10 +4,11 @@
 :Synopsis:          Defines the core highspot object used to interface with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     11 Oct 2022
+:Modified Date:     12 Oct 2022
 """
 
 from . import api
+from . import items as items_module
 from . import users as users_module
 from .errors import exceptions
 from .utils import log_utils, version
@@ -40,10 +41,18 @@ class Highspot(object):
         self.auth = (username, password)
 
         # Import inner object classes so their methods can be called from the primary object
+        self.items = self._import_items_class()
         self.users = self._import_users_class()
 
+    def _import_items_class(self):
+        """This method allows the :py:class:`highspot.core.Highspot.Item` class to be utilized in the core object.
+
+        .. versionadded:: 1.0.0
+        """
+        return Highspot.Item(self)
+
     def _import_users_class(self):
-        """This method allows the :py:class:`highspot.core.Highspot.Users` class to be utilized in the core object.
+        """This method allows the :py:class:`highspot.core.Highspot.User` class to be utilized in the core object.
 
         .. versionadded:: 1.0.0
         """
@@ -66,10 +75,92 @@ class Highspot(object):
         """
         return api.get_request_with_retries(self, endpoint, return_json, verify_ssl)
 
-    class User(object):
-        """This class includes methods associated with Freshservice tickets."""
+    class Item(object):
+        """This class includes methods associated with Highspot items."""
         def __init__(self, hs_object):
-            """This method initializes the :py:class:`highspot.core.Highspot.Tickets` inner class object.
+            """This method initializes the :py:class:`highspot.core.Highspot.Item` inner class object.
+
+            .. versionadded:: 1.0.0
+
+            :param hs_object: The core :py:class:`highspot.Highspot` object
+            :type hs_object: class[highspot.Highspot]
+            """
+            self.hs_object = hs_object
+
+        def get_items(self, spot_id, list_id=None, start=0, limit=100):
+            """This function retrieves the items for a specific Spot.
+
+            .. versionadded:: 1.0.0
+
+            :param spot_id: The unique identifier for the Spot (**required**)
+            :type spot_id: str
+            :param list_id: The unique identifier for a list by which to filter the results
+            :type list_id: str, None
+            :param start: The start position of a paged request (``0`` by default)
+            :type start: int, str
+            :param limit: Maximum number of users returned (``100`` by default)
+            :type limit: int, str
+            :returns: A dictionary containing the items
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_items(self.hs_object, spot_id=spot_id, list_id=list_id, start=start, limit=limit)
+
+        def get_item(self, item_id):
+            """This function retrieves the metadata for a specific item.
+
+            .. versionadded:: 1.0.0
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :returns: The item metadata as a dictionary
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_item(self.hs_object, item_id=item_id)
+
+        def get_item_bookmarks(self, item_id):
+            """This function retrieves the bookmarks for a specific item.
+
+            .. versionadded:: 1.0.0
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :returns: The item bookmarks as a dictionary
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_item_bookmarks(self.hs_object, item_id=item_id)
+
+        def get_item_content(self, item_id, report=False):
+            """This function retrieves the content for a specific item.
+
+            .. versionadded:: 1.0.0
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :param report: Indicates that the content is a report and should be returned in CSV format (False by default)
+            :type report: bool
+            :returns: The item content or an error in plain text or as a dictionary (JSON format)
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            # TODO: Add support for the start parameter
+            return items_module.get_item_content(self.hs_object, item_id=item_id, report=report)
+
+        def get_item_report(self, item_id):
+            """This function retrieves a CSV report for a specific item.
+
+            .. versionadded:: 1.0.0
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :returns: The item content or an error in plain text or as a dictionary (JSON format)
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            # TODO: Add support for the start parameter
+            return items_module.get_item_report(self.hs_object, item_id=item_id)
+
+    class User(object):
+        """This class includes methods associated with Highspot users."""
+        def __init__(self, hs_object):
+            """This method initializes the :py:class:`highspot.core.Highspot.User` inner class object.
 
             .. versionadded:: 1.0.0
 
