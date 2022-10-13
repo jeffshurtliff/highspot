@@ -157,6 +157,18 @@ class Highspot(object):
             # TODO: Add support for the start parameter
             return items_module.get_item_report(self.hs_object, item_id=item_id)
 
+        def get_cms_metadata(self, item_id):
+            """This function retrieves item metadata when the item was imported through an external CMS.
+
+            .. versionadded:: 1.0.0
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :returns: The CMS metadata
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_cms_metadata(self.hs_object, item_id=item_id)
+
     class User(object):
         """This class includes methods associated with Highspot users."""
         def __init__(self, hs_object):

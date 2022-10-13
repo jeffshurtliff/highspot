@@ -108,3 +108,18 @@ def get_item_report(hs_object, item_id):
     # TODO: Add support for the start parameter
     return get_item_content(hs_object, item_id, report=True)
 
+
+def get_cms_metadata(hs_object, item_id):
+    """This function retrieves item metadata when the item was imported through an external CMS.
+
+    .. versionadded:: 1.0.0
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param item_id: The unique identifier for the specific item
+    :type item_id: str
+    :returns: The CMS metadata
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/items/{item_id}/cms/metadata'
+    return api.get_request_with_retries(hs_object, endpoint)
