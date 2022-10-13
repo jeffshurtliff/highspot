@@ -4,7 +4,7 @@
 :Synopsis:          This script is the primary configuration file for the highspot project
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     10 Oct 2022
+:Modified Date:     13 Oct 2022
 """
 
 import setuptools
@@ -45,12 +45,11 @@ setuptools.setup(
     version=version,
     author='Jeff Shurtliff',
     author_email='jeff.shurtliff@rsa.com',
-    description='A Python toolset for utilizing the Freshservice API',
+    description='A Python toolset for utilizing the Highspot API',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/jeffshurtliff/highspot",
     project_urls={
-        'Change Log': 'https://highspot.readthedocs.io/en/latest/changelog.html',
         'Issue Tracker': 'https://github.com/jeffshurtliff/highspot/issues',
     },
     package_dir={'': 'src'},
