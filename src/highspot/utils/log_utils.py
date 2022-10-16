@@ -6,7 +6,7 @@
 :Example:           ``logger = log_utils.initialize_logging(__name__)``
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     10 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 import os
@@ -50,23 +50,16 @@ def initialize_logging(logger_name=None, log_level=None, formatter=None, debug=N
 class LessThanFilter(logging.Filter):
     """This class allows filters to be set to limit log levels to only less than a specified level.
 
-    .. versionadded:: 1.0.0
-
     .. seealso:: `Zoey Greer <https://stackoverflow.com/users/5124424/zoey-greer>`_ is the original author of
                  this class which was provided on `Stack Overflow <https://stackoverflow.com/a/31459386>`_.
     """
     def __init__(self, exclusive_maximum, name=""):
-        """This method instantiates the :py:class:`highspot.utils.log_utils.LessThanFilter` class object.
-
-        .. versionadded:: 1.0.0
-        """
+        """This method instantiates the :py:class:`highspot.utils.log_utils.LessThanFilter` class object."""
         super(LessThanFilter, self).__init__(name)
         self.max_level = exclusive_maximum
 
     def filter(self, record):
         """This method returns a Boolean integer value indicating whether or not a message should be logged.
-
-        .. versionadded:: 1.0.0
 
         .. note:: A non-zero return indicates that the message will be logged.
         """
@@ -75,8 +68,6 @@ class LessThanFilter(logging.Filter):
 
 def _apply_defaults(_logger_name, _formatter, _debug, _log_level, _file_level, _console_level, _syslog_level):
     """This function applies default values to the configuration settings if not explicitly defined.
-
-    .. versionadded:: 1.0.0
 
     :param _logger_name: The name of the logger instance
     :type _logger_name: str, None
@@ -114,8 +105,6 @@ def _apply_defaults(_logger_name, _formatter, _debug, _log_level, _file_level, _
 def _get_log_levels_from_dict(_log_levels):
     """This function returns the individual log level values from a dictionary.
 
-    .. versionadded:: 1.0.0
-
     :param _log_levels: Dictionary containing log levels for different handlers
     :type _log_levels: dict
     :returns: Individual string values for each handler
@@ -129,8 +118,6 @@ def _get_log_levels_from_dict(_log_levels):
 
 def _set_logging_level(_logger, _log_level):
     """This function sets the logging level for a :py:class:`logging.Logger` instance.
-
-    .. versionadded:: 1.0.0
 
     :param _logger: The :py:class:`logging.Logger` instance
     :type _logger: Logger
@@ -173,8 +160,6 @@ def _add_handlers(_logger, _formatter, _no_output, _file_output, _file_log_level
 def _add_file_handler(_logger, _log_level, _log_file, _overwrite, _formatter):
     """This function adds a :py:class:`logging.FileHandler` to the :py:class:`logging.Logger` instance.
 
-    .. versionadded:: 1.0.0
-
     :param _logger: The :py:class:`logging.Logger` instance
     :type _logger: Logger
     :param _log_level: The log level to set for the handler
@@ -216,8 +201,6 @@ def _add_file_handler(_logger, _log_level, _log_file, _overwrite, _formatter):
 def _add_stream_handler(_logger, _log_level, _formatter):
     """This function adds a :py:class:`logging.StreamHandler` to the :py:class:`logging.Logger` instance.
 
-    .. versionadded:: 1.0.0
-
     :param _logger: The :py:class:`logging.Logger` instance
     :type _logger: Logger
     :param _log_level: The log level to set for the handler
@@ -240,8 +223,6 @@ def _add_stream_handler(_logger, _log_level, _formatter):
 
 def _add_split_stream_handlers(_logger, _log_level, _formatter):
     """This function splits messages into q ``stdout`` or ``stderr`` handler depending on the log level.
-
-    .. versionadded:: 1.0.0
 
     .. seealso:: Refer to the documentation for the :py:class:`highspot.utils.log_utils.LessThanFilter` for
                  more information on how this filtering is implemented and for credit to the original author.

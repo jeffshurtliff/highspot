@@ -4,7 +4,7 @@
 :Synopsis:          Defines the users-related functions associated with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     12 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 from . import api
@@ -13,8 +13,6 @@ from .errors import exceptions
 
 def me(hs_object):
     """This function returns the information about the user making the API call.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
@@ -26,8 +24,6 @@ def me(hs_object):
 
 def get_users(hs_object, email=None, list_type=None, with_fields=None, exclude_fields=None, start=0, limit=100):
     """This function retrieves a list of users.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
@@ -75,8 +71,6 @@ def get_users(hs_object, email=None, list_type=None, with_fields=None, exclude_f
 def get_user(hs_object, user_id):
     """This function retrieves the metadata for a specific user.
 
-    .. versionadded:: 1.0.0
-
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
     :param user_id: The unique identifier for the user
@@ -91,8 +85,6 @@ def get_user(hs_object, user_id):
 def get_user_properties(hs_object, user_id):
     """This function retrieves the properties for a specific user.
 
-    .. versionadded:: 1.0.0
-
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
     :param user_id: The unique identifier for the user
@@ -106,8 +98,6 @@ def get_user_properties(hs_object, user_id):
 
 def get_user_property(hs_object, user_id, property_name):
     """This function retrieves a given property for a specific user.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]

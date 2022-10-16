@@ -4,7 +4,7 @@
 :Synopsis:          This module handles interactions with the Highspot REST API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     11 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 import requests
@@ -18,8 +18,6 @@ logger = log_utils.initialize_logging(__name__)
 
 def get_request_with_retries(hs_object, endpoint, return_json=True, verify_ssl=True):
     """This function performs a GET request and will retry several times if a failure occurs.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The Highspot object
     :param endpoint: The endpoint URI to query
@@ -54,8 +52,6 @@ def get_request_with_retries(hs_object, endpoint, return_json=True, verify_ssl=T
 def _report_failed_attempt(_exc_msg, _request_type, _retries):
     """This function reports a failed API call that will be retried.
 
-    .. versionadded:: 1.0.0
-
     :param _exc_msg: The exception that was raised within a try/except clause
     :param _request_type: The type of API request (e.g. ``post``, ``put`` or ``get``)
     :type _request_type: str
@@ -74,8 +70,6 @@ def _report_failed_attempt(_exc_msg, _request_type, _retries):
 
 def _raise_exception_for_repeated_timeouts():
     """This function raises an exception when all API attempts (including) retries resulted in a timeout.
-
-    .. versionadded:: 1.0.0
 
     :returns: None
     :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`

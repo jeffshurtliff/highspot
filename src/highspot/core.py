@@ -4,7 +4,7 @@
 :Synopsis:          Defines the core highspot object used to interface with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     12 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 from . import api
@@ -21,10 +21,7 @@ class Highspot(object):
     """This is the class for the core object leveraged in this library."""
     # Define the function that initializes the object instance (i.e. instantiates the object)
     def __init__(self, username=None, password=None, helper=None, api_version='0.5'):
-        """This method instantiates the core Fresh object.
-
-        .. versionadded:: 1.0.0
-        """
+        """This method instantiates the core Fresh object."""
         # Define the current version
         self.version = version.get_full_version()
 
@@ -45,24 +42,16 @@ class Highspot(object):
         self.users = self._import_users_class()
 
     def _import_items_class(self):
-        """This method allows the :py:class:`highspot.core.Highspot.Item` class to be utilized in the core object.
-
-        .. versionadded:: 1.0.0
-        """
+        """This method allows the :py:class:`highspot.core.Highspot.Item` class to be utilized in the core object."""
         return Highspot.Item(self)
 
     def _import_users_class(self):
-        """This method allows the :py:class:`highspot.core.Highspot.User` class to be utilized in the core object.
-
-        .. versionadded:: 1.0.0
-        """
+        """This method allows the :py:class:`highspot.core.Highspot.User` class to be utilized in the core object."""
         return Highspot.User(self)
 
     # Define the basic GET request method
     def get(self, endpoint, return_json=True, verify_ssl=True):
         """This function performs a GET request and will retry several times if a failure occurs.
-
-        .. versionadded:: 1.0.0
 
         :param endpoint: The endpoint URI to query
         :type endpoint: string
@@ -80,8 +69,6 @@ class Highspot(object):
         def __init__(self, hs_object):
             """This method initializes the :py:class:`highspot.core.Highspot.Item` inner class object.
 
-            .. versionadded:: 1.0.0
-
             :param hs_object: The core :py:class:`highspot.Highspot` object
             :type hs_object: class[highspot.Highspot]
             """
@@ -89,8 +76,6 @@ class Highspot(object):
 
         def get_items(self, spot_id, list_id=None, start=0, limit=100):
             """This function retrieves the items for a specific Spot.
-
-            .. versionadded:: 1.0.0
 
             :param spot_id: The unique identifier for the Spot (**required**)
             :type spot_id: str
@@ -108,8 +93,6 @@ class Highspot(object):
         def get_item(self, item_id):
             """This function retrieves the metadata for a specific item.
 
-            .. versionadded:: 1.0.0
-
             :param item_id: The unique identifier for the specific item
             :type item_id: str
             :returns: The item metadata as a dictionary
@@ -120,8 +103,6 @@ class Highspot(object):
         def get_item_bookmarks(self, item_id):
             """This function retrieves the bookmarks for a specific item.
 
-            .. versionadded:: 1.0.0
-
             :param item_id: The unique identifier for the specific item
             :type item_id: str
             :returns: The item bookmarks as a dictionary
@@ -131,8 +112,6 @@ class Highspot(object):
 
         def get_item_content(self, item_id, report=False):
             """This function retrieves the content for a specific item.
-
-            .. versionadded:: 1.0.0
 
             :param item_id: The unique identifier for the specific item
             :type item_id: str
@@ -147,8 +126,6 @@ class Highspot(object):
         def get_item_report(self, item_id):
             """This function retrieves a CSV report for a specific item.
 
-            .. versionadded:: 1.0.0
-
             :param item_id: The unique identifier for the specific item
             :type item_id: str
             :returns: The item content or an error in plain text or as a dictionary (JSON format)
@@ -159,8 +136,6 @@ class Highspot(object):
 
         def get_cms_metadata(self, item_id):
             """This function retrieves item metadata when the item was imported through an external CMS.
-
-            .. versionadded:: 1.0.0
 
             :param item_id: The unique identifier for the specific item
             :type item_id: str
@@ -174,8 +149,6 @@ class Highspot(object):
         def __init__(self, hs_object):
             """This method initializes the :py:class:`highspot.core.Highspot.User` inner class object.
 
-            .. versionadded:: 1.0.0
-
             :param hs_object: The core :py:class:`highspot.Highspot` object
             :type hs_object: class[highspot.Highspot]
             """
@@ -184,8 +157,6 @@ class Highspot(object):
         def me(self):
             """This function returns the information about the user making the API call.
 
-            .. versionadded:: 1.0.0
-
             :returns: A dictionary with the user data
             :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
             """
@@ -193,8 +164,6 @@ class Highspot(object):
 
         def get_users(self, email=None, list_type=None, with_fields=None, exclude_fields=None, start=0, limit=100):
             """This function retrieves a list of users.
-
-            .. versionadded:: 1.0.0
 
             :param email: An email address by which to filter the users
             :type email: str, None
@@ -218,8 +187,6 @@ class Highspot(object):
         def get_user(self, user_id):
             """This function retrieves the metadata for a specific user.
 
-            .. versionadded:: 1.0.0
-
             :param user_id: The unique identifier for the user
             :type user_id: str
             :returns: The user metadata as a dictionary
@@ -230,8 +197,6 @@ class Highspot(object):
         def get_user_properties(self, user_id):
             """This function retrieves the properties for a specific user.
 
-            .. versionadded:: 1.0.0
-
             :param user_id: The unique identifier for the user
             :type user_id: str
             :returns: The user properties as a dictionary
@@ -241,8 +206,6 @@ class Highspot(object):
 
         def get_user_property(self, user_id, property_name):
             """This function retrieves a given property for a specific user.
-
-            .. versionadded:: 1.0.0
 
             :param user_id: The unique identifier for the user
             :type user_id: str

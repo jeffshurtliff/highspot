@@ -4,7 +4,7 @@
 :Synopsis:          Defines the item-related functions associated with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     12 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 from . import api
@@ -13,8 +13,6 @@ from .errors import exceptions
 
 def get_items(hs_object, spot_id, list_id=None, start=0, limit=100):
     """This function retrieves the items for a specific Spot.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
@@ -38,8 +36,6 @@ def get_items(hs_object, spot_id, list_id=None, start=0, limit=100):
 def get_item(hs_object, item_id):
     """This function retrieves the metadata for a specific item.
 
-    .. versionadded:: 1.0.0
-
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
     :param item_id: The unique identifier for the specific item
@@ -54,8 +50,6 @@ def get_item(hs_object, item_id):
 def get_item_bookmarks(hs_object, item_id):
     """This function retrieves the bookmarks for a specific item.
 
-    .. versionadded:: 1.0.0
-
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
     :param item_id: The unique identifier for the specific item
@@ -69,8 +63,6 @@ def get_item_bookmarks(hs_object, item_id):
 
 def get_item_content(hs_object, item_id, report=False):
     """This function retrieves the content for a specific item.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
@@ -96,8 +88,6 @@ def get_item_content(hs_object, item_id, report=False):
 def get_item_report(hs_object, item_id):
     """This function retrieves a CSV report for a specific item.
 
-    .. versionadded:: 1.0.0
-
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]
     :param item_id: The unique identifier for the specific item
@@ -111,8 +101,6 @@ def get_item_report(hs_object, item_id):
 
 def get_cms_metadata(hs_object, item_id):
     """This function retrieves item metadata when the item was imported through an external CMS.
-
-    .. versionadded:: 1.0.0
 
     :param hs_object: The core :py:class:`highspot.Highspot` object
     :type hs_object: class[highspot.Highspot]

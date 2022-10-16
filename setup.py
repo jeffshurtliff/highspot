@@ -4,7 +4,7 @@
 :Synopsis:          This script is the primary configuration file for the highspot project
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     13 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 import setuptools
@@ -13,10 +13,7 @@ import os.path
 
 
 def read(rel_path):
-    """This function reads the ``version.py`` script in order to retrieve the version.
-
-    .. versionadded:: 1.0.0
-    """
+    """This function reads the ``version.py`` script in order to retrieve the version."""
     here = os.path.abspath(os.path.dirname(__file__))
     with codecs.open(os.path.join(here, rel_path), 'r') as fp:
         return fp.read()
@@ -24,10 +21,7 @@ def read(rel_path):
 
 def get_version(rel_path):
     """This function retrieves the current version of the package without needing to import the
-       :py:mod:`highspot.utils.version` module in order to avoid dependency issues.
-
-    .. versionadded:: 1.0.0
-    """
+       :py:mod:`highspot.utils.version` module in order to avoid dependency issues."""
     for line in read(rel_path).splitlines():
         if line.startswith('__version__'):
             delimiter = '"' if '"' in line else "'"

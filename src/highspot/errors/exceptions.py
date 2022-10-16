@@ -4,7 +4,7 @@
 :Synopsis:          Collection of exception classes relating to the highspot library
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     11 Oct 2022
+:Modified Date:     16 Oct 2022
 """
 
 #################
@@ -14,10 +14,7 @@
 
 # Define base exception class
 class HighspotError(Exception):
-    """This is the base class for Highspot exceptions.
-
-    .. versionadded:: 1.0.0
-    """
+    """This is the base class for Highspot exceptions."""
     pass
 
 
@@ -27,10 +24,7 @@ class HighspotError(Exception):
 
 
 class MissingAuthDataError(HighspotError):
-    """This exception is used when authentication data is not supplied and therefore a connection cannot occur.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used when authentication data is not supplied and therefore a connection cannot occur."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "The authentication data was not provided and a connection cannot be established."
@@ -48,10 +42,7 @@ class MissingAuthDataError(HighspotError):
 
 
 class CurrentlyUnsupportedError(HighspotError):
-    """This exception is used when a feature or functionality being used is currently unsupported.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used when a feature or functionality being used is currently unsupported."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "This feature is currently unsupported at this time."
@@ -64,10 +55,7 @@ class CurrentlyUnsupportedError(HighspotError):
 
 
 class DataMismatchError(HighspotError):
-    """This exception is used when there is a mismatch between two data sources.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used when there is a mismatch between two data sources."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "A data mismatch was found with the data sources."
@@ -87,10 +75,7 @@ class DataMismatchError(HighspotError):
 
 
 class InvalidFieldError(HighspotError):
-    """This exception is used when an invalid field is provided.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used when an invalid field is provided."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "The field that was provided is invalid."
@@ -103,10 +88,7 @@ class InvalidFieldError(HighspotError):
 
 
 class MissingRequiredDataError(HighspotError):
-    """This exception is used when a function or method is missing one or more required arguments.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used when a function or method is missing one or more required arguments."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "Missing one or more required parameters"
@@ -133,10 +115,7 @@ class MissingRequiredDataError(HighspotError):
 
 
 class APIConnectionError(HighspotError):
-    """This exception is used when the API query could not be completed due to connection aborts and/or timeouts.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used when the API query could not be completed due to connection aborts and/or timeouts."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "The API query could not be completed due to connection aborts and/or timeouts."
@@ -146,10 +125,7 @@ class APIConnectionError(HighspotError):
 
 
 class APIRequestError(HighspotError):
-    """This exception is used for generic API request errors when there isn't a more specific exception.
-
-    .. versionadded:: 1.0.0
-    """
+    """This exception is used for generic API request errors when there isn't a more specific exception."""
     def __init__(self, *args, **kwargs):
         """This method defines the default or custom message for the exception."""
         default_msg = "The API request did not return a successful response."
