@@ -104,6 +104,14 @@ class Highspot(object):
             """
             self.hs_object = hs_object
 
+        def get_custom_usage_labels(self):
+            """This method returns the custom usage labels in the user's domain.
+
+            :returns: The custom usage labels data in JSON format
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return domain_module.get_custom_usage_labels(self.hs_object)
+
     class Group(object):
         """This class includes methods associated with Highspot groups."""
         def __init__(self, hs_object):
