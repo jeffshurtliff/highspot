@@ -112,7 +112,7 @@ html_theme_options = {
 html_static_path = ['_static']
 
 # Add custom CSS (not necessary for only custom.css)
-html_style = '_static/custom.css'
+# html_style = '_static/custom.css'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
