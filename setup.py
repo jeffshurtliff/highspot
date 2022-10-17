@@ -4,7 +4,7 @@
 :Synopsis:          This script is the primary configuration file for the highspot project
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     16 Oct 2022
+:Modified Date:     17 Oct 2022
 """
 
 import setuptools
@@ -49,7 +49,7 @@ setuptools.setup(
     package_dir={'': 'src'},
     packages=setuptools.find_packages(where='src'),
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 3 - Alpha",
         "Environment :: Web Environment",
         "Intended Audience :: Information Technology",
         "Intended Audience :: System Administrators",
