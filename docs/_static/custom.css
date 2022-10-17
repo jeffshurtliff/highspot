@@ -67,3 +67,8 @@ a.reference.external > em {
     color: #842a8c;
     font-weight: 500;
 }
+
+/* Hide level four sidebar menu items and below */
+.sphinxsidebar li.toctree-l4 {
+    display: none;
+}
