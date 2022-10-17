@@ -112,6 +112,18 @@ class Highspot(object):
             """
             return domain_module.get_custom_usage_labels(self.hs_object)
 
+        def get_promoted_search_results(self, start=None, limit=None):
+            """This method retrieves the existing promoted search terms and their associated items.
+
+            :param start: The start position of a paged request (``0`` by default)
+            :type start: int, str, None
+            :param limit: Maximum number of users returned (``100`` by default)
+            :type limit: int, str, None
+            :returns: The promoted search data in JSON format
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return domain_module.get_promoted_search_results(self.hs_object, start=start, limit=limit)
+
     class Group(object):
         """This class includes methods associated with Highspot groups."""
         def __init__(self, hs_object):
