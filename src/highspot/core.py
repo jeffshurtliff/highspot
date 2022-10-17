@@ -4,7 +4,7 @@
 :Synopsis:          Defines the core highspot object used to interface with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     16 Oct 2022
+:Modified Date:     17 Oct 2022
 """
 
 from . import api
