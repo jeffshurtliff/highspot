@@ -111,3 +111,47 @@ def get_cms_metadata(hs_object, item_id):
     """
     endpoint = f'/items/{item_id}/cms/metadata'
     return api.get_request_with_retries(hs_object, endpoint)
+
+
+def get_item_thumbnails(hs_object, item_id):
+    """This function retrieves the thumbnail(s) for a given item.
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param item_id: The unique identifier for the specific item
+    :type item_id: str
+    :returns: The thumbnail data
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/items/{item_id}/thumbnails'
+    return api.get_request_with_retries(hs_object, endpoint)
+
+
+def get_item_properties(hs_object, item_id):
+    """This function retrieves the properties for a given item.
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param item_id: The unique identifier for the specific item
+    :type item_id: str
+    :returns: The properties data in JSON format
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/items/{item_id}/properties'
+    return api.get_request_with_retries(hs_object, endpoint)
+
+
+def get_item_property(hs_object, item_id, property_name):
+    """This function retrieves a specific property for a given item.
+
+    :param hs_object: The core :py:class:`highspot.Highspot` object
+    :type hs_object: class[highspot.Highspot]
+    :param item_id: The unique identifier for the specific item
+    :type item_id: str
+    :param property_name: The name of the property to retrieve
+    :type property_name: str
+    :returns: The value of the property in JSON format
+    :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+    """
+    endpoint = f'/items/{item_id}/properties/{property_name}'
+    return api.get_request_with_retries(hs_object, endpoint)

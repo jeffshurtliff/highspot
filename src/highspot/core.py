@@ -144,6 +144,38 @@ class Highspot(object):
             """
             return items_module.get_cms_metadata(self.hs_object, item_id=item_id)
 
+        def get_item_thumbnails(self, item_id):
+            """This function retrieves the thumbnail(s) for a given item.
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :returns: The thumbnail data
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_item_thumbnails(self.hs_object, item_id=item_id)
+
+        def get_item_properties(self, item_id):
+            """This function retrieves the properties for a given item.
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :returns: The properties data
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_item_properties(self.hs_object, item_id=item_id)
+
+        def get_item_property(self, item_id, property_name):
+            """This function retrieves a specific property for a given item.
+
+            :param item_id: The unique identifier for the specific item
+            :type item_id: str
+            :param property_name: The name of the property to retrieve
+            :type property_name: str
+            :returns: The value of the property in JSON format
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return items_module.get_item_property(self.hs_object, item_id=item_id, property_name=property_name)
+
     class User(object):
         """This class includes methods associated with Highspot users."""
         def __init__(self, hs_object):
