@@ -8,7 +8,12 @@
 """
 
 from . import api
+from . import domain as domain_module
 from . import items as items_module
+from . import groups as groups_module
+from . import pitches as pitches_module
+from . import request as request_module
+from . import spots as spots_module
 from . import users as users_module
 from .errors import exceptions
 from .utils import log_utils, version
@@ -38,12 +43,37 @@ class Highspot(object):
         self.auth = (username, password)
 
         # Import inner object classes so their methods can be called from the primary object
+        self.domain = self._import_domain_class()
         self.items = self._import_items_class()
+        self.groups = self._import_groups_class()
+        self.pitches = self._import_pitches_class()
+        self.requests = self._import_request_class()
+        self.spots = self._import_spots_class()
         self.users = self._import_users_class()
+
+    def _import_domain_class(self):
+        """This method allows the :py:class:`highspot.core.Highspot.Domain` class to be utilized in the core object."""
+        return Highspot.Domain(self)
 
     def _import_items_class(self):
         """This method allows the :py:class:`highspot.core.Highspot.Item` class to be utilized in the core object."""
         return Highspot.Item(self)
+
+    def _import_groups_class(self):
+        """This method allows the :py:class:`highspot.core.Highspot.Group` class to be utilized in the core object."""
+        return Highspot.Group(self)
+
+    def _import_pitches_class(self):
+        """This method allows the :py:class:`highspot.core.Highspot.Pitch` class to be utilized in the core object."""
+        return Highspot.Pitch(self)
+
+    def _import_request_class(self):
+        """This method allows the :py:class:`highspot.core.Highspot.Request` class to be utilized in the core object."""
+        return Highspot.Request(self)
+
+    def _import_spots_class(self):
+        """This method allows the :py:class:`highspot.core.Highspot.Spot` class to be utilized in the core object."""
+        return Highspot.Spot(self)
 
     def _import_users_class(self):
         """This method allows the :py:class:`highspot.core.Highspot.User` class to be utilized in the core object."""
@@ -63,6 +93,16 @@ class Highspot(object):
         :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
         """
         return api.get_request_with_retries(self, endpoint, return_json, verify_ssl)
+
+    class Domain(object):
+        """This class includes methods associated with Highspot domains."""
+        def __init__(self, hs_object):
+            """This method initializes the :py:class:`highspot.core.Highspot.Domain` inner class object.
+
+            :param hs_object: The core :py:class:`highspot.Highspot` object
+            :type hs_object: class[highspot.Highspot]
+            """
+            self.hs_object = hs_object
 
     class Item(object):
         """This class includes methods associated with Highspot items."""
@@ -175,6 +215,46 @@ class Highspot(object):
             :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
             """
             return items_module.get_item_property(self.hs_object, item_id=item_id, property_name=property_name)
+
+    class Group(object):
+        """This class includes methods associated with Highspot groups."""
+        def __init__(self, hs_object):
+            """This method initializes the :py:class:`highspot.core.Highspot.Group` inner class object.
+
+            :param hs_object: The core :py:class:`highspot.Highspot` object
+            :type hs_object: class[highspot.Highspot]
+            """
+            self.hs_object = hs_object
+
+    class Pitch(object):
+        """This class includes methods associated with Highspot pitches."""
+        def __init__(self, hs_object):
+            """This method initializes the :py:class:`highspot.core.Highspot.Pitch` inner class object.
+
+            :param hs_object: The core :py:class:`highspot.Highspot` object
+            :type hs_object: class[highspot.Highspot]
+            """
+            self.hs_object = hs_object
+
+    class Request(object):
+        """This class includes methods associated with Highspot asynchronous requests."""
+        def __init__(self, hs_object):
+            """This method initializes the :py:class:`highspot.core.Highspot.Request` inner class object.
+
+            :param hs_object: The core :py:class:`highspot.Highspot` object
+            :type hs_object: class[highspot.Highspot]
+            """
+            self.hs_object = hs_object
+
+    class Spot(object):
+        """This class includes methods associated with Highspot spots and lists."""
+        def __init__(self, hs_object):
+            """This method initializes the :py:class:`highspot.core.Highspot.Spot` inner class object.
+
+            :param hs_object: The core :py:class:`highspot.Highspot` object
+            :type hs_object: class[highspot.Highspot]
+            """
+            self.hs_object = hs_object
 
     class User(object):
         """This class includes methods associated with Highspot users."""
