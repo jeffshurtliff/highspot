@@ -236,6 +236,21 @@ class Highspot(object):
             """
             self.hs_object = hs_object
 
+        def get_pitches(self, start=0, limit=25, sort_by='recent_activity'):
+            """This method retrieves a list of the user's pitches.
+
+            :param start: The start position of a paged request (``0`` by default)
+            :type start: int, str
+            :param limit: Maximum number of users returned (``100`` by default)
+            :type limit: int, str
+            :param sort_by: Determines how the data is sorted (``recent_activity``, ``alphabetical``, or ``date_created``)
+            :type sort_by: str
+            :returns: The pitch data in JSON format
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`,
+                     :py:exc:`highspot.errors.exceptions.InvalidFieldError`
+            """
+            return pitches_module.get_pitches(self.hs_object, start=start, limit=limit, sort_by=sort_by)
+
     class Request(object):
         """This class includes methods associated with Highspot asynchronous requests."""
         def __init__(self, hs_object):
