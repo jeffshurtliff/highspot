@@ -4,7 +4,7 @@
 :Synopsis:          Defines the core highspot object used to interface with the Highspot API
 :Created By:        Jeff Shurtliff
 :Last Modified:     Jeff Shurtliff
-:Modified Date:     17 Oct 2022
+:Modified Date:     20 Oct 2022
 """
 
 from . import api
@@ -133,6 +133,34 @@ class Highspot(object):
             :type hs_object: class[highspot.Highspot]
             """
             self.hs_object = hs_object
+
+        def get_groups(self, role_filter=None, right_filter=None, start=None, limit=None):
+            """This method retrieves the list of groups.
+
+            :param role_filter: Role by which to filter groups (``editor``, ``viewer``, ``manager``, or ``owner``)
+            :type role_filter: str, None
+            :param right_filter: Right by which to filter groups (``edit``, ``view``, or ``manage``)
+            :type right_filter: str, None
+            :param start: The start position of the paged request
+            :type start: str, int, None
+            :param limit: The maximum number of groups returned
+            :type limit: str, int, None
+            :returns: The group list data in JSON format
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`,
+                     :py:exc:`highspot.errors.exceptions.InvalidFieldError`
+            """
+            return groups_module.get_groups(self.hs_object, role_filter=role_filter, right_filter=right_filter,
+                                            start=start, limit=limit)
+
+        def get_group(self, group_id):
+            """This method returns the metadata for a specific group.
+
+            :param group_id: The unique identifier for the group
+            :type group_id: str
+            :returns: The group metadata in JSON format
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return groups_module.get_group(self.hs_object, group_id=group_id)
 
     class Item(object):
         """This class includes methods associated with Highspot items."""
@@ -280,6 +308,26 @@ class Highspot(object):
             :type hs_object: class[highspot.Highspot]
             """
             self.hs_object = hs_object
+
+        def get_request_status(self, request_id):
+            """This function returns the status of an asynchronous request.
+
+            :param request_id: The ID of the request to check
+            :type request_id: str
+            :returns: The status of the request
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return request_module.get_request_status(self.hs_object, request_id=request_id)
+
+        def get_request_result(self, request_id):
+            """This function returns the result of an asynchronous request.
+
+            :param request_id: The ID of the request to check
+            :type request_id: str
+            :returns: The status of the request
+            :raises: :py:exc:`highspot.errors.exceptions.APIConnectionError`
+            """
+            return request_module.get_request_result(self.hs_object, request_id=request_id)
 
     class Spot(object):
         """This class includes methods associated with Highspot spots and lists."""
