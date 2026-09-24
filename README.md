@@ -1,6 +1,11 @@
 # Highspot Python SDK
 A Python toolset for utilizing the Highspot API
 
+> **Python Version Requirement**<br>
+> Highspot SDK `2.0.0` and newer require Python `3.10` or newer (and older than `3.14`).<br>
+> Version `1.0.0` is the final release that supports Python versions older than `3.10`, and can be installed
+> using `pip install "highspot<2"`.
+
 ## Installation
 The package can be installed via pip using the syntax below.
 
@@ -8,12 +13,12 @@ The package can be installed via pip using the syntax below.
 pip install highspot --upgrade
 ```
 
-You may also clone the repository and install from source using below.
+You may also clone the repository and install from source using [Poetry](https://python-poetry.org/) as shown below.
 
 ```sh
 git clone git://github.com/jeffshurtliff/highspot.git
 cd highspot/
-python setup.py install
+poetry install
 ```
 
 ## Usage

@@ -1,5 +1,14 @@
-certifi==2022.12.7
-charset-normalizer==2.1.1
-idna==3.4
-requests==2.28.1
-urllib3==1.26.12
+# highspot runtime dependencies (Python >= 3.10)
+# Keep this file minimal; dev/docs deps live in Poetry groups and docs/requirements.txt.
+
+# Minimum requests version to address known requests security advisories
+requests>=2.33.0,<3
+
+# Minimum urllib3 version to address known urllib3 security advisories
+urllib3>=2.7.0,<3
+
+# Minimum idna version to address known IDNA security advisories
+idna>=3.15,<4
+
+# Minimum certifi version to address known certifi advisories and CA removals
+certifi>=2024.7.4
