@@ -1,0 +1,2 @@
+# Documentation build dependencies (for Read the Docs)
+Sphinx>=7.4.7,<8

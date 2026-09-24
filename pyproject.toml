@@ -1,6 +1,74 @@
-[build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+# --------------------------------------------------------------------
+# Core Project Configuration
+# --------------------------------------------------------------------
+[project]
+name = "highspot"
+version = "2.0.0"
+description = "A Python toolset for utilizing the Highspot API"
+readme = "README.md"
+requires-python = ">=3.10,<3.14.0"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Jeff Shurtliff", email = "jeff@shurt.us" }
 ]
-build-backend = "setuptools.build_meta"
+maintainers = [
+    { name = "Jeff Shurtliff", email = "jeff@shurt.us" }
+]
+
+classifiers = [
+    # Project maturity
+    "Development Status :: 3 - Alpha",
+
+    # Intended audience and environment
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Environment :: Web Environment",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Communications",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Content Management System",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+
+    # Supported Python versions
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+dependencies = [
+    "requests>=2.33.0,<3",
+    "urllib3>=2.7.0,<3",
+    "idna>=3.15,<4",
+    "certifi>=2024.7.4",    # Explicit pin to mitigate CA removals (e-Tugra, GLOBALTRUST)
+]
+
+[project.urls]
+Homepage = "https://github.com/jeffshurtliff/highspot"
+Repository = "https://github.com/jeffshurtliff/highspot"
+Documentation = "https://highspot.readthedocs.io/en/latest/"
+Changelog = "https://highspot.readthedocs.io/en/latest/changelog.html"
+"Issue Tracker" = "https://github.com/jeffshurtliff/highspot/issues"
+
+# --------------------------------------------------------------------
+# Poetry-specific Configuration
+# --------------------------------------------------------------------
+[tool.poetry]
+packages = [
+    { include = "highspot", from = "src" }
+]
+
+include = ["LICENSE", "README.md"]
+
+[tool.poetry.group.dev.dependencies]
+Sphinx = ">=7.4.7,<8"
+twine = ">=6.2.0,<7"
+
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
